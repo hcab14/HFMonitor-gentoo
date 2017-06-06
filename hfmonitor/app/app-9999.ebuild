@@ -16,24 +16,24 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-dev-db/sqlite
->=dev-libs/boost:1.62[context,threads]
->=dev-libs/libusb:1.0
-dev-libs/libpthread-stubs
-sci-libs/fftw:3.0[threads]
-x11-libs/fltk
-hfmonitor/volk
-media-libs/portaudio
-sys-apps/lsb-release
-sys-libs/ncurses
-x11-libs/cairo
-x11-libs/fltk
+>=dev-db/sqlite-3.17
+>=dev-libs/boost-1.62[context,threads]
+>=dev-libs/libusb-1.0
+>=dev-libs/libpthread-stubs-0
+>=sci-libs/fftw-3.3[threads]
+>=x11-libs/fltk-1.3
+  hfmonitor/volk
+>=media-libs/portaudio-19
+  sys-apps/lsb-release
+>=x11-libs/cairo-1.14
+>=x11-libs/fltk-1.3
 "
 
 RDEPEND="${DEPEND}"
 
 src_configure() {
-    cmake-utils_src_configure
+	local mycmakeargs=( -DCMAKE_SKIP_BUILD_RPATH=ON )
+	cmake-utils_src_configure
 }
 
 src_compile() {
