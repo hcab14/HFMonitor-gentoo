@@ -6,7 +6,7 @@ EAPI=6
 inherit git-r3 cmake-utils
 
 DESCRIPTION="HFMonitor"
-HOMEPAGE=""
+HOMEPAGE="https://github.com/hcab14/HFMonitor"
 EGIT_REPO_URI="https://github.com/hcab14/HFMonitor.git"
 EGIT_CLONE_TYPE="shallow"
 
@@ -17,8 +17,8 @@ IUSE=""
 
 DEPEND="
 dev-db/sqlite
-dev-libs/boost[context,threads]
-dev-libs/libusb:1.0
+>=dev-libs/boost:1.62[context,threads]
+>=dev-libs/libusb:1.0
 dev-libs/libpthread-stubs
 sci-libs/fftw:3.0[threads]
 x11-libs/fltk
@@ -36,7 +36,12 @@ src_configure() {
     cmake-utils_src_configure
 }
 
+src_compile() {
+	cmake-utils_src_compile
+}
+
 src_install() {
-    cmake-utils_src_install
+	exeinto /usr/local/bin
+	find ${BUILD_DIR}/src/ -executable -type f -exec doexe '{}' \;
 }
 
