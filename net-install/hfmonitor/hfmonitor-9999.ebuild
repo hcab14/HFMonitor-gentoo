@@ -13,7 +13,7 @@ EGIT_CLONE_TYPE="shallow"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+IUSE="gpu"
 
 DEPEND="
 >=dev-db/sqlite-3.17
@@ -30,12 +30,17 @@ app-editors/vim
 dev-vcs/git
 dev-python/setuptools
 sys-libs/ncurses
-dev-lang/python"
+dev-lang/python
+gpu? ( >=sci-libs/clfft-2.12.2 )
+"
 
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	local mycmakeargs=( -DCMAKE_SKIP_BUILD_RPATH=ON )
+	local mycmakeargs=(
+		-DCMAKE_SKIP_BUILD_RPATH=ON
+		-DUSE_OPENCL="$(usex gpu)"
+	)
 	cmake-utils_src_configure
 }
 
