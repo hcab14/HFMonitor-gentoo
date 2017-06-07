@@ -12,7 +12,7 @@ EGIT_CLONE_TYPE="shallow"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -22,12 +22,15 @@ DEPEND="
 >=dev-libs/libpthread-stubs-0
 >=sci-libs/fftw-3.3[threads]
 >=x11-libs/fltk-1.3
-  hfmonitor/volk
+sci-libs/volk[orc]
 >=media-libs/portaudio-19
-  sys-apps/lsb-release
+sys-apps/lsb-release
 >=x11-libs/cairo-1.14
->=x11-libs/fltk-1.3
-"
+app-editors/vim
+dev-vcs/git
+dev-python/setuptools
+sys-libs/ncurses
+dev-lang/python"
 
 RDEPEND="${DEPEND}"
 
@@ -44,4 +47,3 @@ src_install() {
 	exeinto /usr/local/bin
 	find ${BUILD_DIR}/src/ -executable -type f -exec doexe '{}' \;
 }
-
