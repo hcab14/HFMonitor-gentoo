@@ -16,21 +16,21 @@ KEYWORDS="amd64 x86"
 IUSE="gpu"
 
 DEPEND="
+app-editors/vim
 >=dev-db/sqlite-3.17
->=dev-libs/boost-1.62[context,threads]
+>=dev-libs/boost-1.62[context,python,threads]
 >=dev-libs/libusb-1.0
 >=dev-libs/libpthread-stubs-0
->=sci-libs/fftw-3.3[threads]
->=x11-libs/fltk-1.3
-sci-libs/volk[orc]
->=media-libs/portaudio-19
-sys-apps/lsb-release
->=x11-libs/cairo-1.14
-app-editors/vim
 dev-vcs/git
-dev-python/setuptools
-sys-libs/ncurses
 dev-lang/python
+dev-python/setuptools
+>=media-libs/portaudio-19
+>=sci-libs/fftw-3.3[threads]
+sci-libs/volk[orc]
+sys-apps/lsb-release
+>=x11-libs/fltk-1.3
+>=x11-libs/cairo-1.14
+>=dev-util/cmake-3.6[ncurses]
 gpu? ( >=sci-libs/clfft-2.12.2 )
 "
 
